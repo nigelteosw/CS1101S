@@ -24,7 +24,7 @@ function subsets(lst) {
     }
 }
 
-display(subsets(list(1,2,3)));
+// display(subsets(list(1,2,3)));
 // subsets(list(1,2,3));
 
 // Q3
@@ -33,7 +33,10 @@ function permutations(lst) {
         return list(list());
     }
     else {
-        return 
+        return accumulate(append, null, 
+            map(y => map(x => pair(y, x), permutations(remove(y, lst))), lst));
     }
     
 }
+
+// display(permutations(list(1,2,3)));
