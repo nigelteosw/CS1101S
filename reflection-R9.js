@@ -38,7 +38,7 @@ function m_fib(n) {
 
 // display(m_fib(6));
 
-// memoized fib with only 2 varibles
+// memoized fib with only 2 variables
 function op_fib(n) {
     let a = 0;
     let b = 1;
