@@ -1,24 +1,14 @@
 // Question 1
 function make_optimised_search(A) {
-    function split(xs, start, stop) {
-        let res = [];
-        for (let c = start; c < stop; c = c + 1){
-            res[array_length(res)] = A[c];
-        }
-        return res;
-    }
+    const len = array_length(A);
     
-    function optimised_search(A, x) {
-        let len = array_length(A);
-        let mid = math_floor(len/2);
-        let left = split(A, 0, mid);
-        let right = split(A, mid+1, len);
-        if (x === left[0] || x === right[0]){
-            return true;
-        }
-        return optimised_search(left, x) || optimised_search(right, x);
+    // make a local copy of input array A
+    const B = [];
+    for (let i = 0; i < len; i = i + 1) {
+        B[i] = A[i];
     }
-    return x => optimised_search(A, x);
+    merge_sort(B);
+    return x => binary_search(B, x);
 }
 
 const my_array = [3,41,20,1,5,16,4,0,14,6,17,8,4,0,2];
