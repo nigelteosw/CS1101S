@@ -1,19 +1,19 @@
 // Question 1
-function make_optimised_search(A) {
-    const len = array_length(A);
+// function make_optimised_search(A) {
+//     const len = array_length(A);
     
-    // make a local copy of input array A
-    const B = [];
-    for (let i = 0; i < len; i = i + 1) {
-        B[i] = A[i];
-    }
-    merge_sort(B);
-    return x => binary_search(B, x);
-}
+//     // make a local copy of input array A
+//     const B = [];
+//     for (let i = 0; i < len; i = i + 1) {
+//         B[i] = A[i];
+//     }
+//     merge_sort(B);
+//     return x => binary_search(B, x);
+// }
 
-const my_array = [3,41,20,1,5,16,4,0,14,6,17,8,4,0,2];
-const my_search = make_optimised_search(my_array);
-my_search(3);
+// const my_array = [3,41,20,1,5,16,4,0,14,6,17,8,4,0,2];
+// const my_search = make_optimised_search(my_array);
+// my_search(3);
 
 // Question 2
 // memoized fib with table
