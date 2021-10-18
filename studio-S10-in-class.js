@@ -5,11 +5,18 @@ function rotate_matrix(M) {
         M[i][j] = M[j][i];
         M[j][i] = temp;
     }
-    
+    function swap_lazy(A, i, j) {
+        let temp = A[i];
+        A[i] = A[j];
+        A[j] = temp;
+    }
     for (let i = 0; i < len; i = i + 1){
         for (let j = 0; j < i; j = j + 1) {
             swap(i, j, M);
         }
+    }
+    for (let c = 0; c < len; c = c + 1){
+        swap_lazy(M[c], 0, len-1);
     }
     return M;
 }
