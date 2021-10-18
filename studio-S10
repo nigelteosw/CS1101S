@@ -29,8 +29,10 @@ const LL = list(3, 5, 2, 4, 1);
 bubblesort_list(LL);
 LL; // should show [1, [2, [3, [4, [5, null]]]]]
 
+// Question 3a
 // repetition of the same parameters with within each recursive call
 
+// Question 3b
 
 const mem = [];
 function read(n, k) {
@@ -80,4 +82,5 @@ function first_denomination(kinds_of_coins) {
 
 // cc(2,5);
 
+//Question 3c
 // O(n * k)
