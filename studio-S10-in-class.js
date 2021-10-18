@@ -5,7 +5,7 @@ function rotate_matrix(M) {
         M[i][j] = M[j][i];
         M[j][i] = temp;
     }
-    function swap_lazy(A, i, j) {
+    function swap_d(A, i, j) {
         let temp = A[i];
         A[i] = A[j];
         A[j] = temp;
@@ -15,8 +15,9 @@ function rotate_matrix(M) {
             swap(i, j, M);
         }
     }
+    display(M);
     for (let c = 0; c < len; c = c + 1){
-        swap_lazy(M[c], 0, len-1);
+        swap_d(M[c], 0, 3);
     }
     return M;
 }
