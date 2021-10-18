@@ -5,19 +5,30 @@ function rotate_matrix(M) {
         M[i][j] = M[j][i];
         M[j][i] = temp;
     }
+    
     function swap_d(A, i, j) {
         let temp = A[i];
         A[i] = A[j];
         A[j] = temp;
+    }
+    
+    function reverse_array(A) {
+        const len = array_length(A);
+        const half_len = math_floor(len / 2);
+        let i = 0;
+        while (i < half_len) {
+            const j = len - 1 - i;
+            swap_d(A, i, j);
+            i = i + 1;
+        }
     }
     for (let i = 0; i < len; i = i + 1){
         for (let j = 0; j < i; j = j + 1) {
             swap(i, j, M);
         }
     }
-    display(M);
     for (let c = 0; c < len; c = c + 1){
-        swap_d(M[c], 0, 3);
+        reverse_array(M[c]);
     }
     return M;
 }
