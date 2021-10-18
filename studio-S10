@@ -4,70 +4,71 @@ function swap(A, i, j) {
      A[j] = temp;
 }
 
-// function bubblesort_list(L) {
-//     const len = length(L);
-//     for (let i = len-1; i >= 1; i = i - 1) {
-//         let curr = L;
-//         for (let j = 0; j < i; j = j + 1){
-//             let current = head(curr);
-//             let next = head(tail(curr));
-//             if (current > next) {
-//                 const temp = head(curr);
-//                 current = next;
-//                 next = temp;
-//             }
-//         curr = tail(curr);
-//         }
-//     }
-// }
+function bubblesort_list(lst) {
+    const len = length(lst);
+    
+    for (let i = len - 1; i >= 1; i = i-1) {
+        let curr = lst;
+        
+        for (let j = 0; j < i; j = j+1) {
+            let current = head(curr);
+            let next = head(tail(curr));
+            if (current > next) {
+                const tmp = head(curr);
+                set_head(curr, next);
+                set_head(tail(curr), tmp);
+            }
+            
+            // Traverse through the list
+            curr = tail(curr);
+        }
+    }
+}
 
-// const LL = list(3, 5, 2, 4, 1);
-// bubblesort_list(LL);
-// LL; // should show [1, [2, [3, [4, [5, null]]]]]
+const LL = list(3, 5, 2, 4, 1);
+bubblesort_list(LL);
+LL; // should show [1, [2, [3, [4, [5, null]]]]]
 
 // repetition of the same parameters with within each recursive call
 
+
+const mem = [];
+function read(n, k) {
+    return mem[n] === undefined
+        ? undefined
+        : mem[n][k];
+}
+
+function write(n, k, value) {
+if (mem[n] === undefined) {
+    mem[n] = [];
+    }
+    mem[n][k] = value;
+}
+
+
 function cc(amount, kinds_of_coins) {
-    let mem = [];
-    function read(n, k) {
-        return mem[n] === undefined
-            ? undefined
-            : mem[n][k];
+    if (amount === 0) {
+        return 1;
+    }
+    else if (amount < 0 || kinds_of_coins === 0) {
+        return 0;
     }
     
-    function write(n, k, value) {
-    if (mem[n] === undefined) {
-        mem[n] = [];
-        }
-        mem[n][k] = value;
+    else if (read(amount, kinds_of_coins) !== undefined) {
+        return read(amount, kinds_of_coins);
     }
-
-
-    function cc_inner(amount, kinds_of_coins) {
-        if ((mem[amount][kinds_of_coins]) !== undefined) {
-            return read(amount, kinds_of_coins);
-        }
-        else {
-            if (amount === 0) {
-                write(amount, kinds_of_coins, 1);
-                return 1;
-            }
-            else if (amount < 0 || kinds_of_coins === 0) {
-                write(amount, kinds_of_coins, 0);
-                return 0;
-            }
-            else {
-                let temp = cc(amount, kinds_of_coins - 1)
-            +
-            cc(amount - first_denomination(kinds_of_coins),
-            kinds_of_coins);
-            write(amount, kinds_of_coins, temp);
-            return temp;
-            }
-        }
+    else {
+        const temp = cc(amount, kinds_of_coins - 1)
+        +
+        cc(amount - first_denomination(kinds_of_coins),
+        kinds_of_coins);
+        write(amount, kinds_of_coins, temp);
+        return temp;
     }
-    return cc_inner(amount, kinds_of_coins);
 }
+
+
 
 function first_denomination(kinds_of_coins) {
     return kinds_of_coins === 1 ? 5 :
@@ -77,4 +78,6 @@ function first_denomination(kinds_of_coins) {
         kinds_of_coins === 5 ? 100 : 0;
 }
 
-cc(1,1);
+// cc(2,5);
+
+// O(n * k)
