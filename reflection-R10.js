@@ -29,7 +29,6 @@ function stream_map_optimized(f, s) {
         f, stream_tail(s)) ));
 }
 
-stream_map_optimized(stream_ref, x);
 
 
 function add_streams(s1, s2) {
@@ -42,6 +41,11 @@ function add_streams(s1, s2) {
         () => add_streams(stream_tail(s1),
         stream_tail(s2)));
     }
+}
+
+function zip_list_of_streams(ss) {
+    return pair(head(head(ss)), 
+        () => zip_list_of_streams(append(tail(ss), list(stream_tail(head(ss))))));
 }
 
 
