@@ -60,12 +60,7 @@ function partial_sums(s) {
 }
 
 function partial_sums_add(s) {
-    if (is_null(s)) {
-        return 0;
-    }
-    else {
-    
-    }
+    return pair(head(s), () => add_streams(stream_tail(s), partial_sums_add(s)));
 }
 
 // eval_stream(partial_sums(integers),5);
