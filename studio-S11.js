@@ -48,7 +48,28 @@ function subtract_series(s1, s2) {
     return add_series(s1, negate_series(s2));
 }
 
-const alt_ones = pair(1, pair(-1, () => alt_ones));
+const alt_ones = pair(1, () => pair(-1, () => alt_ones));
+
+const zeroes = pair(head(alt_ones) * 0, () => zeroes);
+
+// eval_stream(zeroes, 5);
+
+function coeffs_to_series(list_of_coeffs) {
+    const zeros = pair(0, () => zeros);
+    function iter(list) {
+        return is_null(list)
+            ? zeros
+            : pair(head(list),
+            () => iter(tail(list)));
+    }
+    return iter(list_of_coeffs);
+}
+
+const S1 = coeffs_to_series(ones);
+
+eval_stream(S1, 5);
+
+
 
 
 
