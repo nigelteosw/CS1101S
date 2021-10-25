@@ -48,7 +48,7 @@ function stream_pairs2(s) {
 const integers = integers_from(1);
 const s2 = stream_pairs2(integers);
 
-eval_stream(s2, 10);
+// eval_stream(s2, 10);
 
 // part d
 // xs will always be 1 as ys goes to infinity as the stream is extended
@@ -58,13 +58,28 @@ eval_stream(s2, 10);
 
 
 // Question 2
+function add_streams(s1, s2) {
+    if (is_null(s1)) {
+        return s2;
+    } else if (is_null(s2)) {
+        return s1;
+    } else {
+        return pair(head(s1) + head(s2),
+            () => add_streams(stream_tail(s1),
+            stream_tail(s2)));
+    }
+}
+
+const add_series = add_streams;
+
 function mul_series(s1, s2) {
     return pair(head(s1),
-        () => add_series(stream_tail(s1), stream_tail(s2)));
+        () => add_series(, ));
 }
 
 const s1 = enum_stream(1,5);
 
+mul_series(s1, s1);
 
 
 
