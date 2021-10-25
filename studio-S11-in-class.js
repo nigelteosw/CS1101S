@@ -50,15 +50,19 @@ const s2 = stream_pairs2(integers);
 
 eval_stream(s2, 10);
 
-// stream_pairs 2
+// part d
+// xs will always be 1 as ys goes to infinity as the stream is extended
 
+// part e
+//
 
-
+integers
 
 // Question 2
 function mul_series(s1, s2) {
-    return pair(sth ,
-        () => add_series(sth, sth));
+    return pair(head(s1) * head(s2),
+        () => add_series(, 
+            ));
 }
 
 
