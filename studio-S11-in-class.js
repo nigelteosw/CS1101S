@@ -54,7 +54,7 @@ const s2 = stream_pairs2(integers);
 // xs will always be 1 as ys goes to infinity as the stream is extended
 
 // part e
-//
+// interleave append 2 streams
 
 
 // Question 2
@@ -72,9 +72,14 @@ function add_streams(s1, s2) {
 
 const add_series = add_streams;
 
+function scale_stream(c, stream) {
+    return stream_map(x => c * x, stream);
+}
+
+
 function mul_series(s1, s2) {
     return pair(head(s1),
-        () => add_series(s1, s2));
+        () => add_series(scale_stream(), s2));
 }
 
 const ones = pair(1, () => ones);
