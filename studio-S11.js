@@ -65,11 +65,10 @@ function coeffs_to_series(list_of_coeffs) {
     return iter(list_of_coeffs);
 }
 
-const S1 = coeffs_to_series(ones);
 
-eval_stream(S1, 5);
+const S1 = mul_streams(integers, mul_streams(integers ,integers));
 
-
+stream_
 
 
 
