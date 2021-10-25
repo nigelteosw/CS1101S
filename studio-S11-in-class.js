@@ -56,16 +56,14 @@ eval_stream(s2, 10);
 // part e
 //
 
-integers
 
 // Question 2
 function mul_series(s1, s2) {
-    return pair(,
-        () => add_series(, ));
+    return pair(head(s1),
+        () => add_series(stream_tail(s1), stream_tail(s2)));
 }
 
-
-
+const s1 = enum_stream(1,5);
 
 
 
