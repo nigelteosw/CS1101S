@@ -72,16 +72,16 @@ function add_streams(s1, s2) {
 
 const add_series = add_streams;
 
-// function mul_series(s1, s2) {
-//     return pair(head(s1),
-//         () => add_series(mul_series( ), )));
-// }
+function mul_series(s1, s2) {
+    return pair(head(s1),
+        () => add_series(s2, mul_series(stream_tail(s1), stream_tail(s2))));
+}
 
-const s1 = ones;
+const ones = pair(1, () => ones);
 
-// const test = mul_series(s1, s1);
+const test = mul_series(ones, ones);
 
-eval_stream(s1, 5);
+eval_stream(test, 5);
 
 
 
