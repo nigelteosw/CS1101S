@@ -35,6 +35,7 @@ const B = pair(1, () => mul_streams(B, integers));
 
 // B is a stream where the value of head B is multiplied by 
 // its corresponding integer in the sequence
+// factorial
 
 const add_series = add_streams;
 
@@ -68,7 +69,6 @@ function coeffs_to_series(list_of_coeffs) {
 
 const S1 = mul_streams(integers, mul_streams(integers ,integers));
 
-stream_
 
 
 
