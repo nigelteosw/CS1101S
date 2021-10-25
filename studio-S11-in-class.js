@@ -60,10 +60,10 @@ integers
 
 // Question 2
 function mul_series(s1, s2) {
-    return pair(head(s1) * head(s2),
-        () => add_series(, 
-            ));
+    return pair(,
+        () => add_series(, ));
 }
+
 
 
 
