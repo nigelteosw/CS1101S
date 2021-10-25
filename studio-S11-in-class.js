@@ -74,7 +74,7 @@ const add_series = add_streams;
 
 function mul_series(s1, s2) {
     return pair(head(s1),
-        () => add_series(s2, mul_series(stream_tail(s1), stream_tail(s2))));
+        () => add_series(s1, s2));
 }
 
 const ones = pair(1, () => ones);
