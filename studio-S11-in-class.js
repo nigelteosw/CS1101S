@@ -72,14 +72,16 @@ function add_streams(s1, s2) {
 
 const add_series = add_streams;
 
-function mul_series(s1, s2) {
-    return pair(head(s1),
-        () => add_series(, ));
-}
+// function mul_series(s1, s2) {
+//     return pair(head(s1),
+//         () => add_series(mul_series( ), )));
+// }
 
-const s1 = enum_stream(1,5);
+const s1 = ones;
 
-mul_series(s1, s1);
+// const test = mul_series(s1, s1);
+
+eval_stream(s1, 5);
 
 
 
