@@ -14,7 +14,7 @@ const stream_pairs_int = stream_pairs(ints);
 
 // eval_stream(stream_pairs_int, 10);
 
-// Qn1 
+// Question 1
 // part a
 // Stream_pairs_ints returns a list of all possible values in a stream
 
@@ -50,7 +50,21 @@ const s2 = stream_pairs2(integers);
 
 eval_stream(s2, 10);
 
-//
+// stream_pairs 2
+
+
+
+
+// Question 2
+function mul_series(s1, s2) {
+    return pair(sth ,
+        () => add_series(sth, sth));
+}
+
+
+
+
+
 
 
 
