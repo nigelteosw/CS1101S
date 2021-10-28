@@ -412,7 +412,8 @@ const primitive_functions = list(
        list("<=",      (x, y) => x <=  y),
        list(">",       (x, y) => x >   y),
        list(">=",      (x, y) => x >=  y),
-       list("!",        x     =>   !   x)
+       list("!",        x     =>   !   x),
+       list("parse",   parse            )
        );
        
 const primitive_function_symbols =
