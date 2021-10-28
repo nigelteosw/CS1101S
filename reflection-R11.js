@@ -32,6 +32,8 @@ function evaluate(component, env) {
            : is_lambda_expression(component)
            ? make_function(lambda_parameter_symbols(component),
                            lambda_body(component), env)
+           : is_logical_composition(component)
+           ? evaluate(logical_composition_to_conditional_expression(component))
            : error(component, "Unknown component:");
 }
 
@@ -458,6 +460,21 @@ function make_conditional_expression(pred, cons, alt) {
 function make_literal(value) {
     return list("literal", value);
 }
+
+// transformation function
+function logical_composition_to_conditional_expression(component) {
+    return logical_symbol(component) === "&&"
+           ? make_conditional_expression(
+                 logical_composition_first_component(component),
+                 logical_composition_second_component(component),
+                 make_literal(false))
+           : // the operator is ||
+           make_conditional_expression(
+                 logical_composition_first_component(component),
+                 make_literal(true),
+                 logical_composition_second_component(component));
+}
+
 
 function setup_environment() {
     return extend_environment(append(primitive_function_symbols,
