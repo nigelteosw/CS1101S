@@ -158,13 +158,27 @@ function smallest_bounding_AAR_area(rs) {
     return get_width(res) * get_height(res);
 }
 
+/*
+display("Question 3A");
 
 const aar1 = list(2, 3, 10, 15);
 const aar2 = list(1, 4, 20, 8 );
 display(smallest_bounding_AAR_area( list(aar1, aar2) ));
 // returns 300  (the smallest bounding AAR is list(1, 3, 20, 15))
+*/
+
+function optimized_smallest_bounding_AAR_area(rs) {
+    function max_bb(aa1, aa2) {
+        let w1 = math_min(get) 
+    }
+    
+}
 
 
+const aar1 = list(2, 3, 10, 15);
+const aar2 = list(1, 4, 20, 8 );
+display(optimized_smallest_bounding_AAR_area( list(aar1, aar2) ));
+// returns 200
 
 
 
