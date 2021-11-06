@@ -88,6 +88,8 @@ function runlength_encode(L) {
 }
 
 /*
+display("Question 2A")
+
 display(runlength_encode(null));
 // returns null
 
@@ -99,6 +101,40 @@ display(runlength_encode(list(6,5,5,9,7,7,5,5,5)));
 */
 
 
+function runlength_decode(R) {
+    if (is_null(R)) {
+        return null;
+    }
+    else {
+        if (is_number(head(R))) {
+            return pair(head(R), runlength_decode(tail(R)));
+        }
+        else if (is_pair(head(R))) {
+            let num = head(head(R));
+            let count = tail(head(R));
+            if (count === 1) {
+                return pair(num, runlength_decode(tail(R)));
+            }
+            else {
+                return pair(num, runlength_decode(pair(pair(num, count-1), tail(R))));
+            }
+        } 
+    }
+}
+
+
+/*
+display("Question 2B");
+
+display(runlength_decode(null));
+// returns null
+
+display(runlength_decode(list(9)));
+// returns list(9)
+
+display(runlength_decode(list(6, pair(5,2), 9, pair(7,2), pair(5,3))));
+// returns list(6,5,5,9,7,7,5,5,5)
+*/
 
 
 
