@@ -136,6 +136,36 @@ display(runlength_decode(list(6, pair(5,2), 9, pair(7,2), pair(5,3))));
 // returns list(6,5,5,9,7,7,5,5,5)
 */
 
+// Feel free to use these functions:
+const get_x = (aar) => list_ref(aar, 0);
+const get_y = (aar) => list_ref(aar, 1);
+const get_width = (aar) => list_ref(aar, 2);
+const get_height = (aar) => list_ref(aar, 3);
+
+function smallest_bounding_AAR_area(rs) {
+    function max_bb(aa1, aa2) {
+        let min_x = math_min(get_x(aa1), get_x(aa2));
+        let min_y = math_min(get_y(aa1), get_y(aa2));
+        let max_x = math_max(get_x(aa1) + get_width(aa1), 
+                        get_x(aa2) + get_width(aa2));
+        let max_y = math_max(get_y(aa1) + get_height(aa1), 
+                        get_y(aa2) + get_height(aa2));
+        let w = max_x - min_x;
+        let h = max_y - min_y;
+        return list(min_x, min_y, w, h);
+    }
+    let res = accumulate(max_bb, head(rs), tail(rs));
+    return get_width(res) * get_height(res);
+}
+
+
+const aar1 = list(2, 3, 10, 15);
+const aar2 = list(1, 4, 20, 8 );
+display(smallest_bounding_AAR_area( list(aar1, aar2) ));
+// returns 300  (the smallest bounding AAR is list(1, 3, 20, 15))
+
+
+
 
 
 
