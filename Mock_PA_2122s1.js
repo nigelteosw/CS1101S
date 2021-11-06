@@ -201,8 +201,8 @@ function overlap_area(aar1, aar2) {
     return w * h;
  }
 
-
-
+/*
+display("Question 3C");
 
 
 display(overlap_area( list(10, 20, 30, 60), list(40, 10, 50, 15) ));
@@ -216,5 +216,5 @@ display(overlap_area( list(10, 20, 30, 60), list(0, 40, 50, 15) ));
 
 display(overlap_area( list(10, 20, 30, 60), list(-25, 75, 50, 15) ));
 // returns 75
-
+*/
 
