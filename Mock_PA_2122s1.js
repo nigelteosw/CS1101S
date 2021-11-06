@@ -191,12 +191,30 @@ display(optimized_smallest_bounding_AAR_area( list(aar1, aar2) ));
 */
 
 
+function overlap_area(aar1, aar2) {
+    let right_xmin = math_max(get_x(aar1), get_x(aar2));
+    let left_xmax = math_min(get_x(aar1) + get_width(aar1), get_x(aar2) + get_width(aar2));
+    let largest_ymin = math_max(get_y(aar1), get_y(aar2));
+    let smallest_ymax = math_min(get_y(aar1) + get_height(aar1), get_y(aar2) + get_height(aar2));
+    let w = math_max(0, left_xmax - right_xmin);
+    let h = math_max(0, smallest_ymax - largest_ymin);
+    return w * h;
+ }
 
 
 
 
 
+display(overlap_area( list(10, 20, 30, 60), list(40, 10, 50, 15) ));
+// returns 0
 
+display(overlap_area( list(10, 20, 30, 60), list(10, 10, 50, 15) ));
+// returns 150
 
+display(overlap_area( list(10, 20, 30, 60), list(0, 40, 50, 15) ));
+// returns 450
+
+display(overlap_area( list(10, 20, 30, 60), list(-25, 75, 50, 15) ));
+// returns 75
 
 
