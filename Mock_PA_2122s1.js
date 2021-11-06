@@ -169,17 +169,26 @@ display(smallest_bounding_AAR_area( list(aar1, aar2) ));
 
 function optimized_smallest_bounding_AAR_area(rs) {
     function max_bb(aa1, aa2) {
-        let w1 = math_min(get) 
+        let w1 = math_max(get_height(aa1), get_width(aa1));
+        let w2 = math_max(get_height(aa2), get_width(aa2));
+        let h1 = math_min(get_height(aa1), get_width(aa1));
+        let h2 = math_min(get_height(aa2), get_width(aa2));
+        let w = math_max(w1, w2);
+        let h = math_max(h1, h2);
+        return list(0,0, w, h);
     }
-    
+    let bb = accumulate(max_bb, head(rs), tail(rs));
+    return get_height(bb) * get_width(bb);
 }
 
+/*
+display("Question 3B");
 
 const aar1 = list(2, 3, 10, 15);
 const aar2 = list(1, 4, 20, 8 );
 display(optimized_smallest_bounding_AAR_area( list(aar1, aar2) ));
 // returns 200
-
+*/
 
 
 
