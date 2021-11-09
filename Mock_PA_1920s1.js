@@ -142,13 +142,15 @@ function eval_postfix_exp(pfe) {
         else {
             const first = pop();
             const second = pop();
+            let temp = helper(curr)(second,first);
+            push(temp);
             
         }
     }
-    
+    return head(stack);
 }
 
-eval_postfix_exp([8,2,"-"]);
+eval_postfix_exp([8,2,"-",7,3,"+","*"]);
 
 
 
