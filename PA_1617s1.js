@@ -30,6 +30,13 @@ function is_dna_strand(lst) {
 // display(is_dna_strand(list("A", "B")));
 // display(is_dna_strand(list("T", "G", "Otto")));
 
+function combine(lst) {
+    return accumulate(append, null, lst);
+}
+
+
+combine(list(list("A", "G", "A"), 
+ list("G", "C", "T", "A"), list("C")));
 
 
 function oxoguanine_repair(lst) {
@@ -324,9 +331,9 @@ function check_parentheses(lst) {
 // check_parentheses(paren_list);
 // // returns false
 
-const paren_list = list("(", "(", ")", "(");
-check_parentheses(paren_list);
-// returns false
+// const paren_list = list("(", "(", ")", "(");
+// check_parentheses(paren_list);
+// // returns false
 
 
 
