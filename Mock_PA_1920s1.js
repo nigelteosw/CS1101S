@@ -75,15 +75,31 @@ function shortest_paper_route(n, mat, start) {
             
     }
     
-    let perm_list = remove(start, enum_list(0, n - 1));
-    display(permutations(perm_list));
-    return accumulate(x => pair(1, x) , null, permutations(perm_list));
+    let curr_dist = Infinity;
+    let curr_route = undefined;
+    let other_houses = remove(start, enum_list(0, n - 1));
+    let routes = map(p => pair(start, append(p, list(start))), permutations(other_houses));
+    
+    function helper(routes) {
+        if (is_null(routes)) {
+            return pair(curr_route, curr_dist);
+        }
+        else {
+            let now_dist = route_distance(mat, head(routes));
+            if (now_dist < curr_dist) {
+                curr_dist = now_dist;
+                curr_route = head(routes);
+            }
+            return helper(tail(routes));
+        }
+    }
+    return helper(routes);
 }
 
-// shortest_paper_route(n, mat, 1);
+shortest_paper_route(n, mat, 1);
 
 
-const bae = [[8, "-", 2], "*", [7, "+", 3]];
+const bae = [[[8, "-", 2], "*", [7, "+", 3]], "+", 2];
 
 function make_postfix_exp(bae) {
     let res = [];
@@ -105,7 +121,7 @@ function make_postfix_exp(bae) {
     return res;
 }
 
-make_postfix_exp(bae);
+// make_postfix_exp(bae);
 
 function eval_postfix_exp(pfe) {
     let stack = null;
@@ -150,7 +166,7 @@ function eval_postfix_exp(pfe) {
     return head(stack);
 }
 
-eval_postfix_exp([8,2,"-",7,3,"+","*"]);
+// eval_postfix_exp([8,2,"-",7,3,"+","*"]);
 
 
 
