@@ -73,7 +73,7 @@ function big_int_mult_by_10_pow_n(bint, n) {
         return bint;
     }
     else {
-        return big_int_mult_by_digit(bint, bint)
+        return big_int_mult_by_digit(bint, bint);
     }
 }
 
