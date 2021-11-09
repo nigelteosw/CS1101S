@@ -89,13 +89,16 @@ function make_postfix_exp(bae) {
     let res = [];
     function inner(bae) {
         if (is_number(bae)) {
-            return bae;
+            res[array_length(res)] = bae;
         }
         else {
             let first = bae[0];
             let second = bae[1];
             let third = bae[2];
-             res[array_length(res)] = first;
+            list(inner(first), inner(third));
+            res[array_length(res)] = second;
+            
+            
         }
     }
     inner(bae);
