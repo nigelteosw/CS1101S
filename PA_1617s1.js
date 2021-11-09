@@ -35,8 +35,8 @@ function combine(lst) {
 }
 
 
-combine(list(list("A", "G", "A"), 
- list("G", "C", "T", "A"), list("C")));
+// combine(list(list("A", "G", "A"), 
+//  list("G", "C", "T", "A"), list("C")));
 
 
 function oxoguanine_repair(lst) {
@@ -266,28 +266,31 @@ function evaluate_BAE_tree(bae) {
 
 
 function build_BAE_tree(bae_list) {
-    if (is_null(bae_list)) {
-        return null;
-    }
-    else {
-        let first = head(bae_list);
-        if (first === "(") {
-            return list(build_BAE_tree(tail(bae_list)));
-        }
-        else if (first === ")") {
-           
+    let next_token = bae_list;
+    
+    function build_tree() {
+        if (equal(head(next_token), "(")) {
+            next_token = tail(next_token);
+            const left_tree = build_tree();
+            const op = head(next_token);
+            next_token = tail(next_token);
+            const right_tree = build_tree();
+            next_token = tail(next_token);
+            return list(left_tree, op, right_tree);
         }
         else {
-            return pair(first, build_BAE_tree(tail(bae_list)));
+            const token = head(next_token);
+            next_token = tail(next_token);
+            return token;
         }
     }
-    
+    build_tree();
 }
 
 
 
-// const bae_list = list("(", "(", 2, "+", 5, ")", "*", 100, ")");
-// build_BAE_tree(bae_list);
+const bae_list = list("(", "(", 2, "+", 5, ")", "*", 100, ")");
+build_BAE_tree(bae_list);
 // returns a result equal to
 // list( list(2, "+", 5), "*", 100 )
 
