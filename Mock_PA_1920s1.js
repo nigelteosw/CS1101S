@@ -107,6 +107,51 @@ function make_postfix_exp(bae) {
 
 make_postfix_exp(bae);
 
+function eval_postfix_exp(pfe) {
+    let stack = null;
+    
+    function push(x) {
+        stack = pair(x, stack);
+    }
+    
+    function pop() {
+        let temp = head(stack);
+        stack = tail(stack);
+        return temp;
+    }
+    
+    function helper(op) {
+        return (op === "+")
+            ? (x,y) => x + y
+            : (op === "-")
+            ? (x,y) => x -y
+            : (op === "*") 
+            ? (x, y) => x * y
+            : (op === "/")
+            ? (x, y) => x / y
+            : error("op not found");
+    }
+    
+    for (let i = 0; i < array_length(pfe); i = i + 1) {
+        const curr = pfe[i];
+        
+        if (is_number(curr)) {
+            push(curr);
+        }
+        
+        else {
+            const first = pop();
+            const second = pop();
+            
+        }
+    }
+    
+}
+
+eval_postfix_exp([8,2,"-"]);
+
+
+
 
 
 
