@@ -55,7 +55,8 @@ function big_int_add(bintX, bintY) {
 
 
 function big_int_mult_by_digit(bint, digit) {
-    return big_int_add(bint, bint);
+    if (digit 
+    return big_int_add(bint, big_int_mult_by_digit(bint, digit));
     
     
     
