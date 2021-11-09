@@ -299,9 +299,9 @@ function evaluate_BAE(bae_list) {
     return evaluate_BAE_tree(build_BAE_tree(bae_list));
 }
 
-const bae_list = list("(", "(", 2, "+", 5, ")", "*", 100, ")");
-evaluate_BAE(bae_list);
-// returns 700
+// const bae_list = list("(", "(", 2, "+", 5, ")", "*", 100, ")");
+// evaluate_BAE(bae_list);
+// // returns 700
 
 
 function check_parentheses(lst) {
