@@ -292,27 +292,41 @@ function evaluate_BAE(bae_list) {
 
 function check_parentheses(lst) {
     let count = 0;
-    function helper(lst) {
-        if (count < 0) {
-            return false;
-        }
-        else {
-            if (head(lst) === "(") {
+    let len = length(lst);
+    if (len % 2 === 1) {
+        return false;
+    }
+    else if ((head(lst) === ")") || (list_ref(lst, len - 1) === "(")) {
+        return false;
+    }
+    else {
+        for (let i = 0; i < len-1; i = i + 1) {
+            if (list_ref(lst, i) === "(") {
                 count = count + 1;
-                return helper(tail(lst));
             }
             else {
                 count = count - 1;
-                return helper(tail(lst));
+            }
+            if (count < 0) {
+                return false;
             }
         }
     }
-    return count;
+    return true;
 }
 
 
+// const paren_list = list("(", "(", ")", ")");
+// check_parentheses(paren_list);
+// // returns true
 
+// const paren_list = list("(", "(", ")", ")", ")", ")");
+// check_parentheses(paren_list);
+// // returns false
 
+const paren_list = list("(", "(", ")", "(");
+check_parentheses(paren_list);
+// returns false
 
 
 
