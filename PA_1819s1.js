@@ -55,17 +55,27 @@ function big_int_add(bintX, bintY) {
 
 
 function big_int_mult_by_digit(bint, digit) {
-    if (digit 
-    return big_int_add(bint, big_int_mult_by_digit(bint, digit));
-    
+    if (digit === 0) {
+        return null;
+    }
+    else {
+        return big_int_add(bint, big_int_mult_by_digit(bint, digit - 1));
+    }
     
     
 }
 
-big_int_mult_by_digit(list(7, 4, 3), 5);
+// big_int_mult_by_digit(list(7, 4, 3), 5);
+// returns list(5, 3, 7, 1)
 
-
-
+function big_int_mult_by_10_pow_n(bint, n) {
+    if (n === 0) {
+        return bint;
+    }
+    else {
+        return big_int_mult_by_digit(bint, bint)
+    }
+}
 
 
 
