@@ -31,18 +31,37 @@ function big_int_to_string(bint) {
 
 function big_int_add(bintX, bintY) {
     
-    function bint_to_num(bint) {
-        let str = big_int_to_string(bint);
-        
+    function inner(x, y, carry) {
+        if (is_null(x) && is_null(y)) {
+            return (carry === 0) ? null : pair(carry, null);
+        }
+        else {
+            const xdigit = is_null(x) ? 0 : head(x);
+            const ydigit = is_null(y) ? 0 : head(y);
+            const sum = xdigit + ydigit + carry;
+            const new_digit = sum % 10;
+            const new_carry = (sum - new_digit) / 10;
+            return pair(new_digit, 
+                inner(is_null(x) ? x : tail(x),
+                    is_null(y) ? y : tail(y), new_carry));
+        }
     }
+    
+    return inner(bintX, bintY, 0);
+}
+
+// big_int_add(list(7, 8, 9), list(5, 6));
+// returns list(2, 5, 0, 1) 
+
+
+function big_int_mult_by_digit(bint, digit) {
+    return big_int_add(bint, bint);
+    
+    
     
 }
 
-
-
-
-
-
+big_int_mult_by_digit(list(7, 4, 3), 5);
 
 
 
