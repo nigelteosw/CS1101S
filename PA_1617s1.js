@@ -284,13 +284,13 @@ function build_BAE_tree(bae_list) {
             return token;
         }
     }
-    build_tree();
+    return build_tree();
 }
 
 
 
-const bae_list = list("(", "(", 2, "+", 5, ")", "*", 100, ")");
-build_BAE_tree(bae_list);
+// const bae_list = list("(", "(", 2, "+", 5, ")", "*", 100, ")");
+// build_BAE_tree(bae_list);
 // returns a result equal to
 // list( list(2, "+", 5), "*", 100 )
 
