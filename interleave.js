@@ -48,6 +48,6 @@ function interleave(n, c) {
     
 }
 
-interleave(135, 24678);
-// interleave(12, 4);
+// interleave(135, 24678);
+interleave(12, 4);
 // should return 1423
